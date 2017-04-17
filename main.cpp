@@ -14,14 +14,17 @@ int main()
 	test[4].setName("Joey");
 	test[5].setName("Phoebe");
 
+	//cout << test[0].getSum() << endl;
 	for (int i = 0; i < 6; i++)
 	{
 		cout << test[i].getName() << endl;
+		cout << test[i].getSum() << endl;
 	}
+
+	//cout << int('E'-'@') << endl;
 
 //delete test;
 //test = nullptr;
-char a;
-cin >> a;
-return 0;
+	system("pause");
+	return 0;
 }
