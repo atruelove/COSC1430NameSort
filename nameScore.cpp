@@ -36,7 +36,7 @@ int nameScore::getFinalScore()
 
 int nameScore::getSum()
 {
-	string name = this->getName();
+	/*string name = this->getName();
 	int sum = 0;
 	char base = ' ';
 	char lowBase = '`';
@@ -55,6 +55,30 @@ int nameScore::getSum()
 		//cout << value << endl;
 		sum += value;
 		//cout << sum << endl;
+	}/**/
+	setSum();
+	return _sum;
+}
+
+void nameScore::setSum()
+{
+	string name = this->getName();
+	int sum = 0;
+	char base = ' ';
+	char lowBase = '`';
+	char upperBase = '@';
+	for (int i = 0; i < name.length(); i++)
+	{
+		if (name[i] >= 'A' && name[i] <= 'Z')
+	{
+	base = upperBase;
 	}
-	return sum;
+	else if (name[i] >= 'z' && name[i] <= 'z')
+	{
+		base = lowBase;
+	}
+	int value = name[i] - base;
+	sum += value;
+	}
+	_sum = sum;
 }

@@ -13,6 +13,7 @@ public:
 	string getName();
 	int getFinalScore();
 	int getSum();
+	void setSum();
 
 
 
