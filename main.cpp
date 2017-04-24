@@ -1,30 +1,40 @@
 #include <iostream>
-#include "nameScore.h"
+#include <fstream>
 #include <string>
-using namespace std;
+#include <array>
+#include <vector>
+#include "nameScore.h"
+using namespace std; 
 
-int main()
-{
-	nameScore *test;
-	test= new nameScore[6];
-	test[0].setName("Ross");
-	test[1].setName("Chandler");
-	test[2].setName("Monica");
-	test[3].setName("Rachel");
-	test[4].setName("Joey");
-	test[5].setName("Phoebe");
+int main() {
+	vector<string> names;
+	string line;
+	ifstream namesFile;
+	nameScore *list;
+	namesFile.open("names.txt");
 
-	//cout << test[0].getSum() << endl;
-	for (int i = 0; i < 6; i++)
-	{
-		cout << test[i].getName() << endl;
-		cout << test[i].getSum() << endl;
+	if (namesFile.is_open()) {
+		while (!namesFile.eof()) {
+			getline(namesFile, line);
+			names.push_back(line);
+		}
+		namesFile.close();
+	}
+	else {
+		cout << "Unable to open file" << endl;
 	}
 
-	//cout << int('E'-'@') << endl;
+	list = new nameScore[names.size()];
+	sort(names.begin(), names.end());
+	for (int i = 0; i < names.size(); i++) {
+		//cout << i << ". " << names[i] << endl;
+		list[i] = nameScore(names[i], i);
+		cout << list[i].getPos() << ". " << list[i].getName() << endl; //reading name and position from nameScore class array
+	}
 
-//delete test;
-//test = nullptr;
+	delete[] list;
+	list = nullptr;
 	system("pause");
 	return 0;
 }
+	
